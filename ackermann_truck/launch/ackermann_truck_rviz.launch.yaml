@@ -1,0 +1,21 @@
+launch:
+
+- include:
+    file: "$(find-pkg-share ackermann_truck)/launch/ackermann_truck.launch.yaml"
+
+- node:
+    name: "joint_state_publisher"
+    pkg: "joint_state_publisher"
+    exec: "joint_state_publisher"
+    param:
+    -
+      name: "rate"
+      value: 30
+
+- node:
+    name: "joint_state_publisher_gui"
+    pkg: "joint_state_publisher_gui"
+    exec: "joint_state_publisher_gui"
+
+- include:
+    file: "$(find-pkg-share ackermann_truck)/launch/rviz.launch.yaml"

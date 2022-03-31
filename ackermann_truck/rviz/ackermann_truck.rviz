@@ -113,7 +113,7 @@ Visualization Manager:
         base_footprint:
           Value: false
         base_link:
-          Value: false
+          Value: true
         drivewhl_l_link:
           Value: true
         drivewhl_r_link:

@@ -1,0 +1,7 @@
+launch:
+
+- node:
+    name: "rviz2"
+    pkg: "rviz2"
+    exec: "rviz2"
+    args: "-d $(find-pkg-share ackermann_truck)/rviz/ackermann_truck.rviz"
