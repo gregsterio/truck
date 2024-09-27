@@ -1,60 +1,7 @@
+[![Test](https://github.com/robotics-laboratory/truck/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/robotics-laboratory/truck/actions/workflows/test.yml)
+
 # Truck
 
-## Getting started
-### Docker
-We use docker for two purposes:
-- Unified isolated environment for easy development and tests
-- Dependency and code delivery system
+**Truck** is an open source project dedicated to the construction and development of the 2.5D indoor autonomous vehicle based on the [ackermann steering model](https://github.com/robotics-laboratory/truck/blob/master/doc/ackermann_vehicle.md). It's maintained by the Robotics Group (Faculty of Computer Science, HSE University) and enthusiasts. You may follow our progress on [YouTube](https://www.youtube.com/watch?v=hF6cDalz8-I&list=PLR1nN_AQOO9zHpkW-phZnqVywjUCj7zHZ).
 
-All prebuild base images are stored at our registry ```cr.yandex/crp8hpfj5tuhlaodm4dl```. At this moment only ubuntu 18.04 is supported (images has some differences):
-- **truck-base-jetson** (jetson runtime)
-- **truck-base-amd64** (dev env, without cuda)
-
-#### Pull and Run
-For jetson check that nvidia runtime is enbled by default in ```/etc/docker/daemon.json```.
-
-```
-{
-    "runtimes": {
-        "nvidia": {
-            "path": "nvidia-container-runtime",
-            "runtimeArgs": []
-        }
-    },
-    "default-runtime": "nvidia"
-}
-```
-
-Now you can start new container and attach.
-
-```
-# dev/amd64
-docker-compose up -d truck-base-amd64
-
-# jetson
-docker-compose up -d truck-base-jetson
-
-# attach to running container
-# use ctrl+p+q to detach
-docker attach truck-base
-
-# or just run another shell
-# exit doesn't stop the container
-docker exec -it truck-base bash
-
-# stop container
-docker stop truck-base
-```
-
-#### Build and Push
-If you need to build container, follow this steps. Up version in ```docker-compose.yaml``` if orresponding dockerfile is changed.
-
-```
-# dev/amd64
-docker-compose build truck-base-amd64
-docker-compose push truck-base-amd64
-
-# jetson
-docker-compose build truck-base-jetson
-docker-compose push truck-base-jetson
-```
+It is intended to be an educational reasearch project, so, among our goals is to maintain a rich set of study materials and detailed [documentation](https://github.com/robotics-laboratory/truck/blob/master/doc/README.md).

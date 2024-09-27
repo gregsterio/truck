@@ -1,0 +1,43 @@
+launch:
+- arg: { name: "simulation", default: "false" }
+- arg: { name: "qos", default: "0" }
+- arg: { name: "map_config", default: "$(find-pkg-share map)/data/map_6.geojson" }
+
+- include:
+    file: $(find-pkg-share model)/launch/model_tf.yaml
+    arg:
+    - { name: "simulation", value: "$(var simulation)" }
+
+- include:
+    file: $(find-pkg-share truck)/launch/control.yaml
+    arg:
+    - { name: "simulation", value: "$(var simulation)" }
+    - { name: "qos", value: "$(var qos)" }
+
+- include:
+    file: $(find-pkg-share pure_pursuit)/launch/pure_pursuit.yaml
+    arg:
+    - { name: "simulation", value: "$(var simulation)" }
+    - { name: "qos", value: "$(var qos)" }
+
+- include:
+    file: $(find-pkg-share visualization)/launch/visualization.yaml
+    arg:
+    - { name: "simulation", value: "$(var simulation)" }
+    - { name: "qos", value: "$(var qos)" }
+    - { name: "map_config", value: "$(var map_config)" }
+
+- include:
+    file: $(find-pkg-share truck)/launch/slam.yaml
+    arg:
+    - { name: "simulation", value: "$(var simulation)" }
+    - { name: "qos", value: "$(var qos)" }
+
+- include:
+    file: $(find-pkg-share occupancy_grid)/launch/occupancy_grid.yaml
+    arg:
+    - { name: "simulation", value: "$(var simulation)" }
+    - { name: "qos", value: "$(var qos)" }
+
+- include:
+    file: $(find-pkg-share truck)/launch/bridge.yaml

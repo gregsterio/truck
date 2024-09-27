@@ -1,0 +1,21 @@
+launch:
+- include:
+   file: $(find-pkg-share truck)/launch/lidar.yaml
+
+- include:
+    file: $(find-pkg-share truck)/launch/camera.yaml
+
+- include:
+    file: $(find-pkg-share hardware_node)/launch/hardware_node.yaml
+
+- include:
+    file: $(find-pkg-share truck)/launch/common.yaml
+    arg:
+    - { name: "simulation", value: "false" }
+    - { name: "qos", value: "0" }
+
+- include:
+    file: $(find-pkg-share perf)/launch/perf_stat.yaml
+
+- include:
+    file: $(find-pkg-share video_streaming)/launch/video_streaming.yaml

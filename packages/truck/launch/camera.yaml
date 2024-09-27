@@ -1,40 +1,34 @@
-# test realsense run
-
 launch:
-
 - node:
     pkg: "realsense2_camera"
     exec: "realsense2_camera_node"
     name: "camera"
-    namespace: "truck"
+    namespace: "camera"
     output: "log"
 
     param:
-    - {name: "enable_color", value: True}
-    - {name: "color_fps", value: 30.0}
-    - {name: "color_qos", value: "SENSOR_DATA"}
-    - {name: "enable_width", value: 640}
-    - {name: "enable_height", value: 480}
+    - { name: "initial_reset", value: True }
+    - { name: "enable_sync", value: False }
+    - { name: "publish_tf", value: False }
 
-    - {name: "enable_depth", value: True}
-    - {name: "depth_fps", value: 30.0}
-    - {name: "depth_qos", value: "SENSOR_DATA"}
-    - {name: "depth_width", value: 848}
-    - {name: "depth_height", value: 480}
+    - { name: "enable_color", value: False }
+    - { name: "rgb_camera.profile", value: "848x480x30" }
 
-    - {name: "enable_accel", value: True}
-    - {name: "accel_fps", value: 250.0}
+    - { name: "enable_depth", value: False }
+    - { name: "depth_module.profile", value: "424x240x15" }
 
-    - {name: "enable_gyro", value: True}
-    - {name: "gyro_fps", value: 200.0}
+    - { name: "enable_accel", value: True }
+    - { name: "accel_fps", value: 200 }
 
-    - {name: "enable_infra", value: False}
-    - {name: "enable_infra1", value: False}
-    - {name: "enable_infra2", value: False}
+    - { name: "enable_gyro", value: True }
+    - { name: "gyro_fps", value: 200 }
 
-    - {name: "enable_fisheye", value: False}
-    - {name: "enable_fisheye1", value: False}
-    - {name: "enable_fisheye2", value: False}
-    - {name: "enable_pose", value: False}
-    - {name: "enable_confidence", value: False}
+    - { name: "unite_imu_method", value: 1 }
+    - { name: "hold_back_imu_for_frames", value: False }
 
+    - { name: "enable_fisheye", value: False }
+    - { name: "enable_fisheye1", value: False }
+    - { name: "enable_fisheye2", value: False }
+    - { name: "enable_infra", value: False }
+    - { name: "enable_infra1", value: False }
+    - { name: "enable_infra2", value: False }

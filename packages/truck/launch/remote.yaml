@@ -1,0 +1,6 @@
+launch:
+- include:
+    file: $(find-pkg-share truck)/launch/control.yaml
+
+- include:
+    file: $(find-pkg-share hardware_node)/launch/hardware_node.yaml

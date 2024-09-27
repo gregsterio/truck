@@ -1,30 +1,29 @@
-version: "3.5"
-
 services:
-  truck-base-jetson:
-    container_name: truck-base
-    image: cr.yandex/crp8hpfj5tuhlaodm4dl/truck-base:jetson-0.3.0
-    stdin_open: true
+  truck:
+    container_name: "${CONTAINER_NAME:-truck-${USER}}"
+    image: "registry.robotics-lab.ru/truck:0.11.1"
     privileged: true
-    tty: true
+    runtime: "${DOCKER_RUNTIME:-runc}"
     build:
-      dockerfile: docker/truck-base-jetson.dockerfile
+      dockerfile: Dockerfile
       context: .
+      x-bake:
+        platforms:
+          - linux/arm64
+          - linux/amd64
+        cache-from:
+          - type=registry,ref=registry.robotics-lab.ru/truck:cache-arm64
+          - type=registry,ref=registry.robotics-lab.ru/truck:cache-amd64
+        cache-to:
+          # - type=registry,ref=registry.robotics-lab.ru/truck:cache-arm64
+          # - type=registry,ref=registry.robotics-lab.ru/truck:cache-amd64
     ports:
-    - "9090:9090"
+      - "${FOXGLOVE_PORT:-8765}:8765"
+      - "${VIDEO_STREAMING_PORT:-8889}:8889"
     volumes:
-    - "${HOME}/truck:/truck"
-    - /dev:/dev
+      - "${PWD}:/truck"
+      - "/dev:/dev"
 
-  truck-base-amd64:
-    container_name: truck-base
-    image: cr.yandex/crp8hpfj5tuhlaodm4dl/truck-base:amd64-0.3.0
-    stdin_open: true
-    tty: true
-    build:
-      dockerfile: docker/truck-base-amd64.dockerfile
-      context: .
-    ports:
-    - "9090:9090"
-    volumes:
-    - "${HOME}/truck:/truck"
+networks:
+  default:
+    name: "${CONTAINER_NAME:-truck-${USER}}"

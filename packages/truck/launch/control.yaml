@@ -1,0 +1,7 @@
+launch:
+- arg: { name: "simulation", default: "false" }
+
+- include:
+    file: $(find-pkg-share control_proxy)/launch/control_proxy.yaml
+    arg:
+    - { name: "simulation", value: $(var simulation) }

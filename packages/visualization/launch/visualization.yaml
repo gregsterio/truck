@@ -1,0 +1,70 @@
+launch:
+  - arg:
+      name: "model_config"
+      default: "$(find-pkg-share model)/config/model.yaml"
+  - arg:
+      name: "map_config"
+      default: "$(find-pkg-share map)/data/map_6.geojson"
+  - arg:
+      name: "simulation"
+      default: "false"
+  - arg:
+      name: "qos"
+      default: "0"
+  - node:
+      pkg: "visualization"
+      exec: "visualization_node"
+      name: "visualization_node"
+      output: "log"
+      param:
+        - { name: "ttl", value: 1.0 }
+        - { name: "use_sim_time", value: "$(var simulation)" }
+        - { name: "model_config", value: "$(var model_config)" }
+        - { name: "map_config", value: "$(var map_config)" }
+
+        - name: "ego"
+          param:
+            - name: track
+              param:
+                - { name: "ttl", value: 2.0 }
+                - { name: "height", value: 0.01 }
+                - { name: "width", value: 0.06 }
+                - { name: "rate", value: 5 }
+
+            - { name: "z_lev", value: 0.0 }
+            - { name: "height", value: 0.2 }
+
+        - name: arc
+          param:
+            - { name: "z_lev", value: 0.0 }
+            - { name: "width", value: 0.04 }
+            - { name: "length", value: 1.0 }
+
+        - name: "waypoints"
+          param:
+            - { name: "z_lev", value: 0.50 }
+            - { name: "radius", value: 0.10 }
+
+        - name: "trajectory"
+          param:
+            - { name: "z_lev", value: 0.0 }
+            - { name: "width", value: 0.1 }
+
+        - name: "map"
+          param:
+            - { name: "z_lev", value: 0.0 }
+
+        - name: "mesh"
+          param:
+            - { name: "body", value: "https://storage.yandexcloud.net/the-lab-storage/truck/body.glb" }
+            - { name: "wheel", value: "https://storage.yandexcloud.net/the-lab-storage/truck/wheel.glb" }
+
+        - name: "navigation_mesh"
+          param:
+            - { name: "z_lev", value: 0.01 }
+            - { name: "radius", value: 0.03 }
+
+        - name: "navigation_route"
+          param:
+            - { name: "z_lev", value: 0.01 }
+            - { name: "width", value: 0.1 }

@@ -1,9 +1,22 @@
 BasedOnStyle: Google
-
-IndentAccessModifiers: false
-AccessModifierOffset: -4
-SpaceBeforeInheritanceColon: false
-
-InsertTrailingCommas: true
-IndentWidth: 4
+Language: Cpp
+AlignTrailingComments: true
+AccessModifierOffset: -2
+AlignAfterOpenBracket: AlwaysBreak
+AllowShortFunctionsOnASingleLine: All
+BinPackArguments: false
+BreakBeforeBraces: Attach
+BreakBeforeBinaryOperators: NonAssignment
+BreakConstructorInitializers: AfterColon
 ColumnLimit: 100
+CompactNamespaces: false
+IndentWidth: 4
+NamespaceIndentation: None
+DerivePointerAlignment: false
+PointerAlignment: Left
+QualifierAlignment: Left
+SortIncludes: false
+SpaceAfterTemplateKeyword: false
+SpaceInEmptyParentheses: false
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: ControlStatements

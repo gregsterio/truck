@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>truck</name>
   <version>0.1.0</version>
@@ -9,13 +8,20 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <exec_depend>launch_ros</exec_depend>
-  <exec_depend>realsense2_camera</exec_depend>
-  <exec_depend>realsense2_description</exec_depend>
+  <depend>launch_ros</depend>
+  <depend>realsense2_camera</depend>
+  <depend>ros_environment</depend>
 
-  <exec_depend>camera_view</exec_depend>
-
-  <build_depend>ros_environment</build_depend>
+  <depend>control_proxy</depend>
+  <depend>icp_odometry</depend>
+  <depend>hardware_node</depend>
+  <depend>occupancy_grid</depend>
+  <depend>pure_pursuit</depend>
+  <depend>visualization</depend>
+  <depend>perf</depend>
+  <depend>video_streaming</depend>
+  <depend>waypoint_follower</depend>
+  <depend>simulator_2d</depend>
 
   <export>
     <build_type>ament_cmake</build_type>
